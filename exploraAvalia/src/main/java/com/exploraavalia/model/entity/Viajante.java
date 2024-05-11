@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
-@Table(name = "exploraavalia", uniqueConstraints={@UniqueConstraint(columnNames={"email", "telefone"})})
+@Table(name = "exploraavalia", uniqueConstraints={@UniqueConstraint(columnNames={"email"})})
 public class Viajante {
 
     @Id

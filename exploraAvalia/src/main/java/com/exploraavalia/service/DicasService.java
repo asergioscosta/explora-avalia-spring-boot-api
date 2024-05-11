@@ -33,29 +33,29 @@ public class DicasService {
 
     public Dicas save(Dicas dicas) throws Exception {
 
-        if (dicas.getDestino() == null) {
-            throw new Exception("Destino inválido. Digite um válido.");
-        }
+            if (dicas.getDestino() == null) {
+                throw new Exception("Destino inválido. Por favor, insira um destino válido.");
+            }
 
-        if (dicas.getCategorias() == null) {
-            throw new Exception("Categoria inválida. Digite uma válida.");
-        }
+            if (dicas.getCategorias() == null) {
+                throw new Exception("Categoria inválida. Por favor, insira uma categoria válida.");
+            }
 
-        if (dicas.getDescricao() == null || dicas.getDescricao().length() < 20) {
-            throw new Exception("Descricão deve ter pelo menos 20 caracteres.");
-        }
+            if (dicas.getDescricao() == null || dicas.getDescricao().length() < 20) {
+                throw new Exception("Descrição inválida. A descrição deve ter pelo menos 20 caracteres.");
+            }
 
-        if (dicas.getTitulo() == null || dicas.getTitulo().length() < 10) {
-            throw new Exception("Título deve ter pelo menos 10 caracteres.");
-        }
+            if (dicas.getTitulo() == null || dicas.getTitulo().length() < 10) {
+                throw new Exception("Título inválido. O título deve ter pelo menos 10 caracteres.");
+            }
 
-        if (dicas.getAvaliacao() == null || dicas.getAvaliacao() < 1 || dicas.getAvaliacao() < 5) {
-            throw new Exception("Nível de avaliação inválido. Digite um número de 1 a 5");
-        }
+            if (dicas.getAvaliacao() == null || dicas.getAvaliacao() < 1 || dicas.getAvaliacao() > 5) {
+                throw new Exception("Nível de avaliação inválido. Insira um valor de avaliação entre 1 e 5.");
+            }
 
-        if (dicas.getCustoMedioDia() == null) {
-            throw new Exception("Custo médio inválido. Digite um valor válido.");
-        }
+            if (dicas.getCustoMedioDia() == null) {
+                throw new Exception("Custo médio inválido. Insira um valor válido para o custo médio.");
+            }
 
         return dicasRepository.save(dicas);
     }

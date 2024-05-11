@@ -8,6 +8,9 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 public class Dicas {
 
+    @ManyToOne
+    private Viajante viajante;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -90,5 +93,13 @@ public class Dicas {
 
     public void setAvaliacao(Integer avaliacao) {
         this.avaliacao = avaliacao;
+    }
+
+    public Viajante getViajante() {
+        return viajante;
+    }
+
+    public void setViajante(Viajante viajante) {
+        this.viajante = viajante;
     }
 }

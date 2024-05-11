@@ -62,4 +62,3 @@ public class ViajanteController {
         return ResponseEntity.ok(viajanteService.count());
     }
 }
-
