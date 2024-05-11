@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
-@Table(name = "exploraavalia", uniqueConstraints={@UniqueConstraint(columnNames={"nome", "sobrenome", "email", "dataNascimento", "nivelExperiencia", "telefone"})})
+@Table(name = "exploraavalia", uniqueConstraints={@UniqueConstraint(columnNames={"email", "telefone"})})
 public class Viajante {
 
     @Id
@@ -38,6 +38,7 @@ public class Viajante {
     @Column
     @NotNull
     private String telefone;
+
 
     public Long getId() {
         return id;
@@ -79,15 +80,6 @@ public class Viajante {
         this.email = email;
     }
 
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
     public Integer getNivelExperiencia() {
         return nivelExperiencia;
     }
@@ -96,4 +88,11 @@ public class Viajante {
         this.nivelExperiencia = nivelExperiencia;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 }

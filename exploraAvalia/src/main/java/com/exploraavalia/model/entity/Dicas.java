@@ -2,11 +2,12 @@ package com.exploraavalia.model.entity;
 
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.springframework.lang.NonNull;
 
 @Entity
-@Table(name = "exploraavalia", uniqueConstraints={@UniqueConstraint(columnNames={"destino", "descricao", "avaliacao", "custoMedioDia", "categorias"})})
+@Table(name = "exploraavalia")
+
 public class Dicas {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,18 +15,34 @@ public class Dicas {
     @Column
     @NotNull
     private String destino;
-    @Column
-    @NotNull
-    private String descricao;
-    @Column
-    @NotNull
-    private Integer avaliacao;
-    @Column
-    @NotNull
-    private Float custoMedioDia;
+
     @Column
     @NotNull
     private String categorias;
+
+    @Column
+    @NotNull
+    private String titulo;
+
+    @Column
+    @NotNull
+    private String descricao;
+
+    @Column
+    @NotNull
+    private Float custoMedioDia;
+
+    @Column
+    @NotNull
+    private Integer avaliacao;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getDestino() {
         return destino;
@@ -33,30 +50,6 @@ public class Dicas {
 
     public void setDestino(String destino) {
         this.destino = destino;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Integer getAvaliacao() {
-        return avaliacao;
-    }
-
-    public void setAvaliacao(int avaliacao) {
-        this.avaliacao = avaliacao;
-    }
-
-    public Float getCustoMedioDia() {
-        return custoMedioDia;
-    }
-
-    public void setCustoMedioDia(Float custoMedioDia) {
-        this.custoMedioDia = custoMedioDia;
     }
 
     public String getCategorias() {
@@ -67,11 +60,35 @@ public class Dicas {
         this.categorias = categorias;
     }
 
-    public Long getId() {
-        return id;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Float getCustoMedioDia() {
+        return custoMedioDia;
+    }
+
+    public void setCustoMedioDia(Float custoMedioDia) {
+        this.custoMedioDia = custoMedioDia;
+    }
+
+    public Integer getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Integer avaliacao) {
+        this.avaliacao = avaliacao;
     }
 }

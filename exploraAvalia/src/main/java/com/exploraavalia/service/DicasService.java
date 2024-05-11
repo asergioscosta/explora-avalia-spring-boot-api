@@ -33,12 +33,20 @@ public class DicasService {
 
     public Dicas save(Dicas dicas) throws Exception {
 
-        if (dicas.getDescricao() == null || dicas.getDescricao().length() < 500) {
-            throw new Exception("Descricão deve ter pelo menos 500 caracteres.");
-        }
-
         if (dicas.getDestino() == null) {
             throw new Exception("Destino inválido. Digite um válido.");
+        }
+
+        if (dicas.getCategorias() == null) {
+            throw new Exception("Categoria inválida. Digite uma válida.");
+        }
+
+        if (dicas.getDescricao() == null || dicas.getDescricao().length() < 20) {
+            throw new Exception("Descricão deve ter pelo menos 20 caracteres.");
+        }
+
+        if (dicas.getTitulo() == null || dicas.getTitulo().length() < 10) {
+            throw new Exception("Título deve ter pelo menos 10 caracteres.");
         }
 
         if (dicas.getAvaliacao() == null || dicas.getAvaliacao() < 1 || dicas.getAvaliacao() < 5) {
@@ -46,7 +54,7 @@ public class DicasService {
         }
 
         if (dicas.getCustoMedioDia() == null) {
-            throw new Exception("Custo médio inválido. Valor um válido.");
+            throw new Exception("Custo médio inválido. Digite um valor válido.");
         }
 
         return dicasRepository.save(dicas);
