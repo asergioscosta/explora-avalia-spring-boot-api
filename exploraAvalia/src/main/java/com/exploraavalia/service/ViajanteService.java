@@ -2,6 +2,7 @@ package com.exploraavalia.service;
 
 import com.exploraavalia.model.entity.Viajante;
 import com.exploraavalia.model.repository.ViajanteRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -32,15 +33,12 @@ public class ViajanteService {
         return viajante.get();
     }
 
+
     public Viajante save(Viajante viajante) throws Exception {
 
         if (viajante.getNome() == null || viajante.getNome().length() < 3 || viajante.getNome().isEmpty()) {
             throw new Exception("Nome deve ter pelo menos 3 caracteres.");
         }
-
-    //    if (viajante.getSobrenome() == null || viajante.getSobrenome().isEmpty()) {
-    //        throw new Exception("Sobrenome inválido. Digite um sobrenome válido.");
-     //   }
 
         if (viajante.getDataNascimento() == null) {
             throw new Exception("Data de Nascimento inválida. Digite uma data de nascimento válida.");
@@ -58,8 +56,13 @@ public class ViajanteService {
             throw new Exception("Telefone inválido. Digite um telefone válido.");
         }
 
+        if (viajanteRepository.findByEmail(viajante.getEmail()).isPresent()) {
+            throw new Exception("O email fornecido já está em uso.");
+        }
+
         viajante.setDataNascimento(new Date());
         return viajanteRepository.save(viajante);
+
     }
 
     public Viajante delete(Long id) throws Exception {
