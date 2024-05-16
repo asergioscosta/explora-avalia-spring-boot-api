@@ -25,10 +25,6 @@ public class Dicas {
 
     @Column
     @NotNull
-    private String titulo;
-
-    @Column
-    @NotNull
     private String descricao;
 
     @Column
@@ -61,14 +57,6 @@ public class Dicas {
 
     public void setCategorias(String categorias) {
         this.categorias = categorias;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String getDescricao() {

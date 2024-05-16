@@ -14,11 +14,11 @@ public class ViajanteService {
 
     private ViajanteRepository viajanteRepository;
 
-    public ViajanteService(ViajanteRepository viajanteRepository){
+    public ViajanteService(ViajanteRepository viajanteRepository) {
         this.viajanteRepository = viajanteRepository;
     }
 
-    public List<Viajante> findAll(){
+    public List<Viajante> findAll() {
         return viajanteRepository.findAll();
     }
 
@@ -47,19 +47,23 @@ public class ViajanteService {
             throw new Exception("Nível de Experiência inválido. O nível de experiência deve estar entre 1 e 5.");
         }
 
-        if (viajante.getEmail() == null || viajante.getEmail().isEmpty()){
+        if (viajante.getEmail() == null || viajante.getEmail().isEmpty()) {
             throw new Exception("E-mail inválido. Digite um e-mail válido.");
+        }
+
+        Optional<Viajante> viajanteTemp = viajanteRepository.findByEmail(viajante.getEmail());
+        if (viajanteTemp.isPresent()) {
+            if (viajante.getId() != viajanteTemp.get().getId()) {
+                throw new Exception("O email fornecido já está em uso.");
+            }
+
         }
 
         if (viajante.getTelefone() == null) {
             throw new Exception("Telefone inválido. Digite um telefone válido.");
         }
 
-        if (viajanteRepository.findByEmail(viajante.getEmail()).isPresent()) {
-            throw new Exception("O email fornecido já está em uso.");
-        }
 
-        viajante.setDataNascimento(new Date());
         return viajanteRepository.save(viajante);
 
     }
@@ -75,7 +79,7 @@ public class ViajanteService {
         return viajante.get();
     }
 
-        public Long count(){
+    public Long count() {
         return viajanteRepository.count();
     }
 }

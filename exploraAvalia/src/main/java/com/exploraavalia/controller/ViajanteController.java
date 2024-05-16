@@ -17,12 +17,12 @@ public class ViajanteController {
     }
 
     @GetMapping()
-    public ResponseEntity findAll(){
+    public ResponseEntity findAll() {
         return ResponseEntity.ok(viajanteService.findAll());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity findById(@PathVariable("id") Long id){
+    public ResponseEntity findById(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(viajanteService.findById(id));
         } catch (Exception e) {
@@ -31,7 +31,7 @@ public class ViajanteController {
     }
 
     @PostMapping()
-    public ResponseEntity save(@RequestBody Viajante viajante){
+    public ResponseEntity save(@RequestBody Viajante viajante) {
         try {
             return ResponseEntity.ok(viajanteService.save(viajante));
         } catch (Exception e) {
@@ -49,7 +49,7 @@ public class ViajanteController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id){
+    public ResponseEntity delete(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(viajanteService.delete(id));
         } catch (Exception e) {
@@ -58,7 +58,7 @@ public class ViajanteController {
     }
 
     @GetMapping("/total")
-    public ResponseEntity getTotal(){
+    public ResponseEntity getTotal() {
         return ResponseEntity.ok(viajanteService.count());
     }
 }

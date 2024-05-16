@@ -10,17 +10,18 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/dicas")
 public class DicasController {
     private final DicasService dicasService;
+
     public DicasController(DicasService dicasService) {
         this.dicasService = dicasService;
     }
 
     @GetMapping()
-    public ResponseEntity findAll(){
+    public ResponseEntity findAll() {
         return ResponseEntity.ok(dicasService.findAll());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity findById(@PathVariable("id") Long id){
+    public ResponseEntity findById(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(dicasService.findById(id));
         } catch (Exception e) {
@@ -29,7 +30,7 @@ public class DicasController {
     }
 
     @PostMapping()
-    public ResponseEntity save(@RequestBody Dicas dicas){
+    public ResponseEntity save(@RequestBody Dicas dicas) {
         try {
             return ResponseEntity.ok(dicasService.save(dicas));
         } catch (Exception e) {
@@ -38,7 +39,7 @@ public class DicasController {
     }
 
     @PutMapping()
-    public ResponseEntity edit(@RequestBody Dicas dicas){
+    public ResponseEntity edit(@RequestBody Dicas dicas) {
         try {
             return ResponseEntity.ok(dicasService.save(dicas));
         } catch (Exception e) {
@@ -47,7 +48,7 @@ public class DicasController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id){
+    public ResponseEntity delete(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(dicasService.delete(id));
         } catch (Exception e) {
@@ -56,7 +57,7 @@ public class DicasController {
     }
 
     @GetMapping("/total")
-    public ResponseEntity getTotal(){
+    public ResponseEntity getTotal() {
         return ResponseEntity.ok(dicasService.count());
     }
 }
