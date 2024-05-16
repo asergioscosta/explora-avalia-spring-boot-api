@@ -33,7 +33,6 @@ public class ViajanteService {
         return viajante.get();
     }
 
-
     public Viajante save(Viajante viajante) throws Exception {
 
         if (viajante.getNome() == null || viajante.getNome().length() < 3 || viajante.getNome().isEmpty()) {
@@ -48,7 +47,7 @@ public class ViajanteService {
             throw new Exception("Nível de Experiência inválido. O nível de experiência deve estar entre 1 e 5.");
         }
 
-        if (viajante.getEmail() == null || viajante.getEmail().isEmpty()) {
+        if (viajante.getEmail() == null || viajante.getEmail().isEmpty()){
             throw new Exception("E-mail inválido. Digite um e-mail válido.");
         }
 

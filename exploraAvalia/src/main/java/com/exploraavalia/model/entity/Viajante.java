@@ -12,7 +12,7 @@ public class Viajante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column
     @NotNull
@@ -40,14 +40,6 @@ public class Viajante {
     private String telefone;
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -72,14 +64,6 @@ public class Viajante {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Integer getNivelExperiencia() {
         return nivelExperiencia;
     }
@@ -94,5 +78,21 @@ public class Viajante {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
