@@ -53,16 +53,14 @@ public class ViajanteService {
 
         Optional<Viajante> viajanteTemp = viajanteRepository.findByEmail(viajante.getEmail());
         if (viajanteTemp.isPresent()) {
-            if (viajante.getId() != viajanteTemp.get().getId()) {
+            if (!Long.valueOf(viajante.getId()).equals(viajanteTemp.get().getId())) {
                 throw new Exception("O email fornecido já está em uso.");
             }
-
         }
 
         if (viajante.getTelefone() == null) {
             throw new Exception("Telefone inválido. Digite um telefone válido.");
         }
-
 
         return viajanteRepository.save(viajante);
 

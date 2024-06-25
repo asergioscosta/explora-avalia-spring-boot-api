@@ -39,7 +39,7 @@ public class ViajanteController {
         }
     }
 
-    @PutMapping()
+    @PutMapping("{id}")
     public ResponseEntity edit(@RequestBody Viajante viajante) {
         try {
             return ResponseEntity.ok(viajanteService.save(viajante));
